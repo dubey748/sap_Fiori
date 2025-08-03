@@ -1,0 +1,60 @@
+<mvc:View
+    controllerName="ztable.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <content>
+
+            <!-- SmartFilterBar with corrected ControlConfigurations -->
+            <smartFilterBar:SmartFilterBar
+                id="smartFilterBar"
+                entitySet="Products"
+                useToolbar="true"
+                liveMode="false"
+            >
+                <smartFilterBar:controlConfiguration>
+                    <smartFilterBar:ControlConfiguration
+                        id="_IDGenControlConfiguration"
+                        key="Name"
+                        visibleInAdvancedArea="true"
+                    />
+                </smartFilterBar:controlConfiguration>
+            </smartFilterBar:SmartFilterBar>
+
+            <!-- SmartTable (now non-self-closing) -->
+            <smartTable:SmartTable
+                id="SmartTable"
+                smartFilterId="smartFilterBar"
+                entitySet="Products"
+                tableType="ResponsiveTable"
+                enableAutoColumnWidth="true"
+                enableExport="true"
+                useVariantManagement="true"
+                header="Products Table"
+                showRowCount="true"
+                persistencyKey="smartTable_Explored"
+                enableAutoBinding="true"
+                initiallyVisibleFields="ID,Name,Description,Price,Rating"
+                class="sapUiResponsiveContentPadding"
+            >
+                <!-- Now you can add things like headerToolbar here later if needed -->
+                <Table id="_IDGenTable"  mode="MultiSelect">
+                  <headerToolbar>
+                  <OverflowToolbar id="overFlowToolbar">
+                  <ToolbarSpacer id="_IDGenToolbarSpacer" />
+                  <Button id="deleteButton" type="Reject" icon="sap-icon://delete" text="Delete" press="onDelete" ></Button>
+                  </OverflowToolbar>
+                 </headerToolbar>
+                </Table>
+              
+            </smartTable:SmartTable>
+
+        </content>
+    </Page>
+</mvc:View>
