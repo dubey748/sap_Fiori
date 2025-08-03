@@ -1,0 +1,145 @@
+<mvc:View
+    controllerName="masterdetail.zordersummarymasterdetail.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+>
+    <Page id="page">
+        <customHeader>
+            <OverflowToolbar id="_IDGenOverflowToolbar1">
+                <content>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                    <Title
+                        id="_IDGenTitle"
+                        text="Order Summary Master Detail"
+                    />
+                    <ToolbarSpacer id="_IDGenToolbarSpacer2" />
+                </content>
+            </OverflowToolbar>
+        </customHeader>
+        <content>
+            <SplitContainer
+                id="_IDGenSplitContainer1"
+                initialMaster="master"
+                initialDetail="orderDetail"
+            >
+                <detailPages>
+                    <Page
+                        id="orderDetail"
+                        title="Order Details"
+                    >
+                        <Table
+                            id="orderTable"
+                            items="{/Order_Details}"
+                        >
+                            <columns>
+                                <Column id="_IDGenColumn1">
+                                    <Text
+                                        id="_IDGenText"
+                                        text="Order ID"
+                                    />
+                                </Column>
+                                <Column id="_IDGenColumn2">
+                                    <Text
+                                        id="_IDGenText1"
+                                        text="Product ID"
+                                    />
+                                </Column>
+                                <Column id="_IDGenColumn3">
+                                    <Text
+                                        id="_IDGenText2"
+                                        text="Unit Price"
+                                    />
+                                </Column>
+                                <Column id="_IDGenColumn4">
+                                    <Text
+                                        id="_IDGenText3"
+                                        text="Quantity"
+                                    />
+                                </Column>
+                                <Column id="_IDGenColumn5">
+                                    <Text
+                                        id="_IDGenText4"
+                                        text="Discount"
+                                    />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem id="_IDGenColumnListItem1" type="Navigation" press="onPressOrderDetail">
+                                    <cells>
+                                        <Text
+                                            id="_IDGenText5"
+                                            text="{OrderID}"
+                                        />
+                                        <Text
+                                            id="_IDGenText6"
+                                            text="{ProductID}"
+                                        />
+                                        <Text
+                                            id="_IDGenText7"
+                                            text="{UnitPrice}"
+                                        />
+                                        <Text
+                                            id="_IDGenText8"
+                                            text="{Quantity}"
+                                        />
+                                        <Text
+                                            id="_IDGenText9"
+                                            text="{Discount}"
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </Page>
+                    <Page showNavButton="true" navButtonPress="onProductBack" id="ProductDetail" title="Product">
+                    <VBox id="_IDGenVBox" >
+                    <f:SimpleForm id="_IDGenSimpleForm" editable="false">
+                    <f:content>
+                    <Label id="_IDGenLabel" text="Product Name"></Label>
+                    <Text id="_IDGenText11"  text="{/ProductName}"></Text>
+                     <Label id="_IDGenLabel1" text="Supplier ID"></Label>
+                    <Text id="_IDGenText12"  text="{/SupplierID}"></Text>
+                     <Label id="_IDGenLabel2" text="Category ID"></Label>
+                    <Text id="_IDGenText13"  text="{/CategoryID}"></Text>
+                     <Label id="_IDGenLabel3" text="Quantity Per Unit"></Label>
+                    <Text id="_IDGenText14"  text="{/QuantityPerUnit}"></Text>
+                     <Label id="_IDGenLabel4" text="Unit Price"></Label>
+                    <Text id="_IDGenText15"  text="{/UnitPrice}"></Text>
+                     <Label id="_IDGenLabel5" text="Units In Stock"></Label>
+                    <Text id="_IDGenText16"  text="{/UnitsInStock}"></Text>
+                     <Label id="_IDGenLabel6" text="Units On Order"></Label>
+                    <Text id="_IDGenText17"  text="{/UnitsOnOrder}"></Text>
+                      <Label id="_IDGenLabel7" text="Reorder Level"></Label>
+                    <Text id="_IDGenText18"  text="{/ReorderLevel}"></Text>
+                     <Label id="_IDGenLabel8" text="Discontinued"></Label>
+                    <Text id="_IDGenText19"  text="{/Discontinued}"></Text>
+                    </f:content>
+                    </f:SimpleForm>
+                    </VBox>
+                    </Page>
+                </detailPages>
+                <masterPages>
+                    <Page
+                        id="master"
+                        title="Order Master"
+                    >
+                        <List
+                            id="orderList"
+                            items="{/Orders}"
+                            itemPress="onListPress"
+                        >
+                            <items>
+                                <StandardListItem
+                                    id="_IDGenStandardListItem"
+                                    title="{OrderID}"
+                                    type="Navigation"
+                                />
+                            </items>
+                        </List>
+                    </Page>
+                </masterPages>
+            </SplitContainer>
+        </content>
+    </Page>
+</mvc:View>
